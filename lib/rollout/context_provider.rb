@@ -14,9 +14,8 @@ module Rollout
       @rollout ||= Roller.new(Rollout.redis, rollout_context_class.new(self))
       @rollout
     end
-    
+
     included do
-      class_attribute :rollout_context_class
       delegate :enabled?, :feature, to: :rollout
       helper_method :enabled?, :feature
       helper_method :rollout
